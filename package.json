@@ -1,0 +1,40 @@
+{
+  "name": "cyclia-backend",
+  "version": "1.0.0",
+  "description": "Awesome proyect",
+  "main": "index.ts",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "ts-node-dev respawn index.ts",
+    "start": "ts-node index.ts",
+    "typeorm": "typeorm-ts-node-commonjs -d ./src/config/data.source.ts",
+    "mig:gen": "npm run typeorm migration:generate",
+    "mig:run": "npm run typeorm migration:run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Alexander Marin",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/bcryptjs": "^2.4.6",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/node": "^20.11.20",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@aws-sdk/client-sns": "^3.516.0",
+    "@aws-sdk/client-textract": "^3.521.0",
+    "@types/multer": "^1.4.11",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.4.5",
+    "file-system": "^2.2.2",
+    "kafkajs": "^2.2.4",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.11.3",
+    "reflect-metadata": "^0.2.1",
+    "typeorm": "^0.3.20"
+  }
+}
