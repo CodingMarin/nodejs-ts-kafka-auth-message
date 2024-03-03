@@ -1,4 +1,4 @@
 export const languages = {
-    en: { message: 'Request performed successfully' },
-    es: { message: 'Peticion realizada exitosamente' }
-}
+  en: { message: "Request performed successfully" },
+  es: { message: "Peticion realizada exitosamente" },
+};

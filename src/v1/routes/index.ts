@@ -1,3 +1,3 @@
-export * from "./user"
-export * from "./identity"
-export * from "./message"
+export * from "./user";
+export * from "./identity";
+export * from "./message";
