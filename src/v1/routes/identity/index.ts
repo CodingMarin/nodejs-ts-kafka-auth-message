@@ -1,1 +1,1 @@
-export { identityRouter } from "./identity.routes"
+export { identityRouter } from "./identity.routes";

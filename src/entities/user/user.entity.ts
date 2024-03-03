@@ -1,67 +1,67 @@
 import {
-    Entity,
-    Column,
-    PrimaryGeneratedColumn,
-    UpdateDateColumn,
-    DeleteDateColumn,
-    BeforeInsert,
-    BeforeUpdate,
-} from 'typeorm'
-import bcrypt from 'bcryptjs'
-import { RoleType } from '../../types'
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  BeforeInsert,
+  BeforeUpdate,
+} from "typeorm";
+import bcrypt from "bcryptjs";
+import { RoleType } from "../../types";
 
-@Entity({ name: 'Users' })
+@Entity({ name: "Users" })
 export class User {
-    @PrimaryGeneratedColumn('uuid')
-    id: string
+  @PrimaryGeneratedColumn("uuid")
+  id: string;
 
-    @Column({ type: 'varchar', length: 255, nullable: false })
-    name: string
+  @Column({ type: "varchar", length: 255, nullable: false })
+  name: string;
 
-    @Column({ type: 'varchar', length: 255, nullable: false })
-    surnames: string
+  @Column({ type: "varchar", length: 255, nullable: false })
+  surnames: string;
 
-    @Column({ type: 'enum', enum: RoleType, nullable: false })
-    role: string
+  @Column({ type: "enum", enum: RoleType, nullable: false })
+  role: string;
 
-    @Column({ type: 'int8', nullable: true })
-    dni: number
+  @Column({ type: "int8", nullable: true })
+  dni: number;
 
-    @Column({ type: 'char', length: 2, nullable: true })
-    country: string
+  @Column({ type: "char", length: 2, nullable: true })
+  country: string;
 
-    @Column({ type: 'varchar', length: 255, nullable: false })
-    email: string
+  @Column({ type: "varchar", length: 255, nullable: false })
+  email: string;
 
-    @Column({ type: 'varchar', length: 255, nullable: false })
-    password: string
+  @Column({ type: "varchar", length: 255, nullable: false })
+  password: string;
 
-    @Column({ type: 'varchar', nullable: true })
-    photoUrl: string
+  @Column({ type: "varchar", nullable: true })
+  photoUrl: string;
 
-    @Column({ type: 'boolean', name: 'verified', nullable: true })
-    verified: boolean
+  @Column({ type: "boolean", name: "verified", nullable: true })
+  verified: boolean;
 
-    @UpdateDateColumn({
-        name: 'updated_at',
-        type: 'timestamp',
-        default: () => 'CURRENT_TIMESTAMP',
-        onUpdate: 'CURRENT_TIMESTAMP',
-    })
-    updatedAt: Date
+  @UpdateDateColumn({
+    name: "updated_at",
+    type: "timestamp",
+    default: () => "CURRENT_TIMESTAMP",
+    onUpdate: "CURRENT_TIMESTAMP",
+  })
+  updatedAt: Date;
 
-    @DeleteDateColumn({
-        name: 'deleted_at',
-        type: 'timestamp',
-        default: null,
-        nullable: true,
-    })
-    deletedAt: Date
+  @DeleteDateColumn({
+    name: "deleted_at",
+    type: "timestamp",
+    default: null,
+    nullable: true,
+  })
+  deletedAt: Date;
 
-    @BeforeInsert()
-    @BeforeUpdate()
-    async hashPassword() {
-        const salt = await bcrypt.genSalt()
-        this.password = await bcrypt.hash(this.password, salt)
-    }
+  @BeforeInsert()
+  @BeforeUpdate()
+  async hashPassword() {
+    const salt = await bcrypt.genSalt();
+    this.password = await bcrypt.hash(this.password, salt);
+  }
 }

@@ -1,43 +1,36 @@
-import { Router } from 'express'
-import { ErrorHandlerWrapper, AuthorizationWrapper } from '../../../utils'
-import * as handlers from './user.handlers'
+import { Router } from "express";
+import { ErrorHandlerWrapper, AuthorizationWrapper } from "../../../utils";
+import * as handlers from "./user.handlers";
 
-const userRouter = Router()
+const userRouter = Router();
 
-userRouter.post(
-    '/signup',
-    ErrorHandlerWrapper(handlers.signupHandler)
-)
+userRouter.post("/signup", ErrorHandlerWrapper(handlers.signupHandler));
 
-userRouter.post(
-    '/login',
-    ErrorHandlerWrapper(handlers.loginHandler)
-)
+userRouter.post("/login", ErrorHandlerWrapper(handlers.loginHandler));
 
 userRouter.patch(
-    '/change-password',
-    ErrorHandlerWrapper(handlers.changePasswordHandler)
-)
+  "/change-password",
+  ErrorHandlerWrapper(handlers.changePasswordHandler),
+);
 
 userRouter.get(
-    '/users',
-    ErrorHandlerWrapper(AuthorizationWrapper(handlers.getAllUsersHandler))
-)
+  "/users",
+  ErrorHandlerWrapper(AuthorizationWrapper(handlers.getAllUsersHandler)),
+);
 
 userRouter.get(
-    '/users/:id',
-    ErrorHandlerWrapper(AuthorizationWrapper(handlers.getUserHandler))
-)
+  "/users/:id",
+  ErrorHandlerWrapper(AuthorizationWrapper(handlers.getUserHandler)),
+);
 
 userRouter.patch(
-    '/users/:id',
-    ErrorHandlerWrapper(AuthorizationWrapper(handlers.updateUserHandler))
-)
+  "/users/:id",
+  ErrorHandlerWrapper(AuthorizationWrapper(handlers.updateUserHandler)),
+);
 
 userRouter.delete(
-    '/users/:id',
-    ErrorHandlerWrapper(AuthorizationWrapper(handlers.deleteUserHandler))
-)
+  "/users/:id",
+  ErrorHandlerWrapper(AuthorizationWrapper(handlers.deleteUserHandler)),
+);
 
-
-export { userRouter }
+export { userRouter };
