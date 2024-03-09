@@ -10,8 +10,7 @@
     "typeorm": "typeorm-ts-node-commonjs -d ./src/config/data.source.ts",
     "mig:gen": "npm run typeorm migration:generate",
     "mig:run": "npm run typeorm migration:run",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepare": "husky"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "typescript",
@@ -43,8 +42,8 @@
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20.11.20",
-    "husky": "^9.0.11",
-    "lint-staged": "^15.2.2",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@types/swagger-ui-express": "^4.1.6",
     "prettier": "3.2.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
@@ -61,9 +60,8 @@
     "multer": "^1.4.5-lts.1",
     "pg": "^8.11.3",
     "reflect-metadata": "^0.2.1",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.0",
     "typeorm": "^0.3.20"
-  },
-  "lint-staged": {
-    "**/*": "prettier --write --ignore-unknown"
   }
 }

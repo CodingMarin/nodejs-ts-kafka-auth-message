@@ -112,7 +112,7 @@ export default class UserService extends JwtService {
     try {
       const users = await this.repository
         .createQueryBuilder("user")
-        .select(["user.id", "user.email", "user.surnames"])
+        .select(["user.id", "user.email", "user.surnames", "user.photoUrl"])
         .where("user.deletedAt IS NULL")
         .getMany();
 
@@ -181,7 +181,7 @@ export default class UserService extends JwtService {
     try {
       const user = await this.repository
         .createQueryBuilder("user")
-        .select(["user.id", "user.email", "user.name"])
+        .select(["user.id", "user.email", "user.name", "user.photoUrl"])
         .where("user.deletedAt IS NULL AND user.id = :id", { id })
         .getOne();
 
