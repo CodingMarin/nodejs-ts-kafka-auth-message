@@ -11,10 +11,7 @@ const messageRouter = Router();
  *   description: Endpoints related to message management
  */
 
-messageRouter.post(
-  "/message",
-  ErrorHandlerWrapper(handlers.messageHandler)
-);
+messageRouter.post("/message", ErrorHandlerWrapper(handlers.messageHandler));
 
 messageRouter.get(
   "/message",

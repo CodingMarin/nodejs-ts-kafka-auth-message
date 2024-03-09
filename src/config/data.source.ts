@@ -29,9 +29,9 @@ const config = {
   ssl: true,
   extra: {
     ssl: {
-      rejectUnauthorized: false
-    }
-  }
+      rejectUnauthorized: false,
+    },
+  },
 };
 
 export const dataSource = new DataSource(<DataSourceOptions>config);

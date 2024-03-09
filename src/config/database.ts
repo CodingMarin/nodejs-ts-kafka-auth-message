@@ -6,7 +6,7 @@ export const initializeDatabase = async () => {
     console.log("✅ Database connection:", ds.isInitialized);
   } catch (error) {
     if (error instanceof Error) {
-      console.log(error.message)
+      console.log(error.message);
     }
   }
 };
