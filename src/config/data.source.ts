@@ -6,7 +6,7 @@ import { DataSource, DataSourceOptions } from "typeorm";
 dotenv.config();
 
 const {
-  POSTGRES_HOST,
+  POSTGRES_URL,
   POSTGRES_PORT,
   POSTGRES_USER,
   POSTGRES_PASSWORD,
@@ -15,18 +15,23 @@ const {
 
 const config = {
   type: "postgres",
-  host: POSTGRES_HOST,
+  host: POSTGRES_URL,
   port: Number(POSTGRES_PORT),
   username: POSTGRES_USER,
   password: POSTGRES_PASSWORD,
   database: POSTGRES_DATABASE,
-  synchronize: false,
-  migrationsRun: true,
+  synchronize: true,
+  migrationsRun: false,
   dropSchema: false,
   entities: [join(__dirname, "/../**/*.entity.{js,ts}")],
   migrations: [join(__dirname, "/../migrations/*{js,ts}")],
   logging: false,
-  ssl: false,
+  ssl: true,
+  extra: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
 };
 
 export const dataSource = new DataSource(<DataSourceOptions>config);
