@@ -57,3 +57,10 @@ export const deleteUserHandler = async (req: Request, res: Response) => {
 
   res.status(200).json(result);
 };
+
+export const refreshTokenHandler = async (req: Request, res: Response) => {
+  const refreshToken = req.body || {};
+  const result = await UserService.refreshToken(refreshToken);
+
+  res.status(200).json(result);
+};

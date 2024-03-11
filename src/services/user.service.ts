@@ -55,7 +55,16 @@ export default class UserService extends JwtService {
       if (!bcrypt.compareSync(password, user.password))
         throw new CustomError("Invalid password", 400);
 
-      const accessToken = this.signToken(user.id);
+      const accessToken = this.signToken(
+        user.id,
+        this.ACCESS_SECRET,
+        this.ACCESS_LIFETIME,
+      );
+      const refreshToken = this.signToken(
+        user.id,
+        this.REFRESH_SECRET,
+        this.REFRESH_LIFETIME,
+      );
 
       return {
         message: "Login successful",
@@ -63,7 +72,8 @@ export default class UserService extends JwtService {
           name: user.name,
           surnames: user.surnames,
           email: user.email,
-          token: accessToken,
+          accessToken: accessToken,
+          refreshToken: refreshToken,
         },
       };
     } catch (error) {
@@ -199,4 +209,26 @@ export default class UserService extends JwtService {
    */
   private static getUserByEmail = async (email: string) =>
     await this.repository.findOne({ where: { email } });
+
+  static refreshToken = async (refreshToken: string) => {
+    try {
+      const userId = JwtService.authorizeRefreshToken(refreshToken);
+      const accessToken = this.signToken(
+        userId,
+        this.ACCESS_SECRET,
+        this.ACCESS_LIFETIME,
+      );
+
+      return {
+        message: "New access token generated",
+        data: {
+          accessToken: accessToken,
+        },
+      };
+    } catch (error) {
+      if (error instanceof Error) {
+        console.error(error.message);
+      }
+    }
+  };
 }

@@ -292,4 +292,9 @@ userRouter.delete(
   ErrorHandlerWrapper(AuthorizationWrapper(handlers.deleteUserHandler)),
 );
 
+userRouter.post(
+  "/token/refresh-token",
+  ErrorHandlerWrapper(handlers.refreshTokenHandler),
+);
+
 export { userRouter };

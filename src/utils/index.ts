@@ -25,7 +25,7 @@ export const ErrorHandlerWrapper = (handler: Handler) => {
 export const AuthorizationWrapper = (handler: HandlerWithSub) => {
   return async (req: Request, res: Response) => {
     try {
-      const sub = JwtService.authorize(
+      const sub = JwtService.authorizeAccessToken(
         req.headers?.authorization.split(" ")[1],
       );
       await handler(req, res, sub);
