@@ -11,3 +11,7 @@
 # Ignore artifacts:
 build
 coverage
+
+# Docker ignore
+
+.dockerignore
